@@ -1,10 +1,27 @@
-export let Save = () => {
-  let data = localStorage.getItem("time");
-  let arr = JSON.parse(data ?? "");
-  console.log(arr);
+// {useState}
+interface amount {
+  cur_500: number;
+  cur_200: number;
+  cur_100: number;
+  cur_50: number;
+  cur_20: number;
+  cur_10: number;
+  cur_5: number;
+  total_: number;
+}
+export let Save = ({ cur }: { cur: amount[] }) => {
+  //   let data = localStorage.getItem("time");
+  //   let arr = JSON.parse(data ?? "[]");
+
+  console.log(cur);
+  //   const [cur, setCur] = useState(arr);
+  //   if (cur.length != arr.length) {
+  //     setCur(arr);
+  //   }
+
   return (
     <>
-      {arr.map(
+      {cur.map(
         ({
           cur_500,
           cur_200,

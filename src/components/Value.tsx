@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { Save } from "./Save";
-
+interface amount {
+  cur_500: number;
+  cur_200: number;
+  cur_100: number;
+  cur_50: number;
+  cur_20: number;
+  cur_10: number;
+  cur_5: number;
+  total_: number;
+}
 export let Value = ({
   total_,
   setTotal,
@@ -15,12 +24,23 @@ export let Value = ({
   const [cur_20, set20] = useState(0);
   const [cur_10, set10] = useState(0);
   const [cur_5, set5] = useState(0);
+  const [cur, setCur] = useState<amount[]>([]);
+
+  const Savedetails = (obj: any) => {
+    // let arr = [];
+    let data = JSON.parse(localStorage.getItem("time") ?? "[]");
+    data.push(obj);
+    setCur(data);
+    let wt = JSON.stringify(data);
+    localStorage.setItem("time", wt);
+  };
   const total = (old: number, val: number) => {
     let tot = cur_5 + cur_10 + cur_20 + cur_50 + cur_100 + cur_200 + cur_500;
     tot -= old;
     tot += val;
     setTotal(tot);
   };
+
   return (
     <div>
       <section>
@@ -167,24 +187,12 @@ export let Value = ({
               cur_5,
               total_,
             };
-            SaveDetails(state);
-            // let arr = [];
-            // arr.push(state);
-            // let wt = JSON.stringify(arr);
-            // localStorage.setItem("time", wt);
+            Savedetails(state);
           }}>
           Save
         </button>
-        <Save></Save>
+        <Save cur={cur}></Save>
       </div>
     </div>
   );
-};
-
-export const SaveDetails = (obj: any) => {
-  // let arr = [];
-  let data = JSON.parse(localStorage.getItem("time") ?? "[]");
-  data.push(obj);
-  let wt = JSON.stringify(data);
-  localStorage.setItem("time", wt);
 };
