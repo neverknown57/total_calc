@@ -1,0 +1,68 @@
+.inputBox {
+  display: grid;
+  grid-template-columns: 15% 20% auto;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 1rem;
+}
+
+section:nth-of-type(even) {
+  /* background-color: #d93b86; sRGB fallback */
+  background-color: #e9ecef;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #212529;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 0.2rem #212529;
+  border-radius: 0.5rem 0.5rem 1rem 1rem;
+}
+label {
+  /* display: block; */
+  width: 3rem;
+  /* color: blue; */
+}
+section {
+  padding: 1.2rem;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+section > div > div {
+  justify-self: auto;
+}
+input {
+  border: none;
+  color: inherit;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  border-bottom: 2px solid #000;
+  /* width: 4rem; */
+
+  /* background-color: aquamarine; */
+}
+section div > div {
+  /* width: 4rem; */
+  /* flex: 1 1 35%; */
+  padding-left: 1rem;
+}
+
+button {
+  font-size: 2rem;
+  font-weight: 500;
+  background-color: #e8f7ff;
+  padding: 0.7rem 1.3rem;
+  border: 2px solid black;
+  border-radius: 12px;
+  margin: 1em 2em;
+  color: #212529;
+}
+
+.container > div {
+  border-bottom: 1px solid #21252926;
+}

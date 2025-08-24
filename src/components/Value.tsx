@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Save } from "./Save";
+import style from "./Value.module.css";
 interface amount {
   cur_500: number;
   cur_200: number;
@@ -24,15 +25,19 @@ export let Value = ({
   const [cur_20, set20] = useState(0);
   const [cur_10, set10] = useState(0);
   const [cur_5, set5] = useState(0);
-  const [cur, setCur] = useState<amount[]>([]);
+  const [cur, setCur] = useState<amount[] | null>([]);
 
   const Savedetails = (obj: any) => {
     // let arr = [];
     let data = JSON.parse(localStorage.getItem("time") ?? "[]");
-    data.push(obj);
+    data.unshift(obj);
     setCur(data);
     let wt = JSON.stringify(data);
     localStorage.setItem("time", wt);
+  };
+  const clearstorage = () => {
+    localStorage.removeItem("time");
+    setCur(null);
   };
   const total = (old: number, val: number) => {
     let tot = cur_5 + cur_10 + cur_20 + cur_50 + cur_100 + cur_200 + cur_500;
@@ -42,7 +47,7 @@ export let Value = ({
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <section>
         <div style={{ display: "flex" }}>
           <label htmlFor="cur500">500: </label>
@@ -60,7 +65,6 @@ export let Value = ({
 
           <div>{cur_500}</div>
         </div>
-        <div></div>
       </section>
       {/* for 200 */}
 
@@ -80,7 +84,6 @@ export let Value = ({
 
           <div>{cur_200}</div>
         </div>
-        <div></div>
       </section>
       {/* for 100 */}
       <section>
@@ -88,6 +91,7 @@ export let Value = ({
           <label htmlFor="cu100">100: </label>
           <input
             name="cur100_"
+            id="cu100"
             type="number"
             onChange={(e) => {
               let val = Number(e.target.value) * 100;
@@ -99,7 +103,6 @@ export let Value = ({
 
           <div>{cur_100}</div>
         </div>
-        <div></div>
       </section>
       {/* for 50 */}
       <section>
@@ -118,7 +121,6 @@ export let Value = ({
 
           <div>{cur_50}</div>
         </div>
-        <div></div>
       </section>
       <section>
         <div style={{ display: "flex" }}>
@@ -136,7 +138,6 @@ export let Value = ({
 
           <div>{cur_20}</div>
         </div>
-        <div></div>
       </section>
       <section>
         <div style={{ display: "flex" }}>
@@ -154,7 +155,6 @@ export let Value = ({
 
           <div>{cur_10}</div>
         </div>
-        <div></div>
       </section>
       <section>
         <div style={{ display: "flex" }}>
@@ -172,7 +172,6 @@ export let Value = ({
 
           <div>{cur_5}</div>
         </div>
-        <div></div>
       </section>
       <div>
         <button
@@ -191,8 +190,9 @@ export let Value = ({
           }}>
           Save
         </button>
-        <Save cur={cur}></Save>
+        <button onClick={clearstorage}>Clear</button>
       </div>
+      {cur != null ? <Save cur={cur}></Save> : <></>}
     </div>
   );
 };

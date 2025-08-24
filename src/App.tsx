@@ -7,23 +7,44 @@ import { Value } from "./components/Value";
 
 function App() {
   const [total, setTotal] = useState(0);
-  // const [cur_500, set500] = useState(0);
 
   return (
     <>
-      <div>
-        <section
+      <section
+        style={{
+          display: "flex",
+          // flex: "1 1 auto ",
+          justifyContent: "space-around",
+          // margin: "2em 1em 0.6em 0",
+          padding: "1em 2em",
+          boxShadow: "0 1px 0.1 #423f3dbb",
+          background: "#f8f9fa",
+          color: "#212529",
+          fontWeight: 700,
+          lineHeight: 1.7,
+          borderRadius: "1rem 1rem 0.5rem 0.5rem",
+          fontSize: "x-large",
+          letterSpacing: "3px",
+        }}>
+        <div
           style={{
-            display: "flex",
-            flex: "1 1 auto ",
-            justifyContent: "space-around",
+            background: "#a3daff2e",
+            padding: "0.6em 1.2em",
+            borderRadius: "1em",
           }}>
-          <div>Total : </div>
-          <div>{total}</div>
-        </section>
-        <Value total_={total} setTotal={setTotal}></Value>
-        {/* <Save></Save> */}
-      </div>
+          Total :{" "}
+        </div>
+        <div
+          style={{
+            background: "#a3daff2e",
+            padding: "0.6em 1.2em",
+            borderRadius: "1em",
+          }}>
+          {total}
+        </div>
+      </section>
+      <Value total_={total} setTotal={setTotal}></Value>
+      {/* <Save></Save> */}
     </>
   );
 }

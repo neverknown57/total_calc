@@ -1,0 +1,26 @@
+table,
+thead,
+tbody,
+th,
+tr,
+td {
+  border: 1px solid #121313a8;
+  border-collapse: collapse;
+}
+table {
+  text-align: justify;
+  padding: 1rem 0.6rem;
+  margin: 1rem;
+}
+
+th,
+td {
+  padding: 0.6rem 1.2rem;
+}
+thead th {
+  width: 12.5%;
+  background-color: #1c7cd6;
+}
+tr:nth-of-type(odd) {
+  background-color: #e8f7ff;
+}
