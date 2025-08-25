@@ -19,6 +19,10 @@ section:nth-of-type(even) {
   background-color: #f8f9fa;
   box-shadow: 0 0 0.2rem #212529;
   border-radius: 0.5rem 0.5rem 1rem 1rem;
+  width: 100%;
+  max-width: inherit;
+  overflow-wrap: break-word;
+  overflow: auto;
 }
 label {
   /* display: block; */

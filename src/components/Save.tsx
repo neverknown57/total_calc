@@ -14,7 +14,6 @@ export let Save = ({ cur }: { cur: amount[] }) => {
   //   let data = localStorage.getItem("time");
   //   let arr = JSON.parse(data ?? "[]");
 
-  console.log(cur);
   //   const [cur, setCur] = useState(arr);
   //   if (cur.length != arr.length) {
   //     setCur(arr);
@@ -25,6 +24,15 @@ export let Save = ({ cur }: { cur: amount[] }) => {
     <table className={tablestyle.table}>
       <thead>
         <tr>
+          <th>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <title />
+              <g data-name="34-Time" id="_34-Time">
+                <path d="M16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0Zm1,29.95V26H15v3.95A14,14,0,0,1,2.05,17H6V15H2.05A14,14,0,0,1,15,2.05V6h2V2.05A14,14,0,0,1,29.95,15H26v2h3.95A14,14,0,0,1,17,29.95Z" />
+                <path d="M17,9H15v7a1,1,0,0,0,.29.71l5,5,1.41-1.41L17,15.59Z" />
+              </g>
+            </svg>
+          </th>
           <th>₹ 500</th>
           <th>₹ 200</th>
           <th>₹ 100</th>
@@ -38,6 +46,7 @@ export let Save = ({ cur }: { cur: amount[] }) => {
       <tbody>
         {cur.map(
           ({
+            time_str,
             cur_500,
             cur_200,
             cur_100,
@@ -49,6 +58,7 @@ export let Save = ({ cur }: { cur: amount[] }) => {
           }: any) => {
             return (
               <tr>
+                <th>{time_str}</th>
                 <td>{cur_500}</td>
                 <td>{cur_200}</td>
                 <td>{cur_100}</td>

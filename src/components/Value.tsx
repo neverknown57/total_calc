@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Save } from "./Save";
 import style from "./Value.module.css";
+import { timeFormat } from "d3-time-format";
 interface amount {
+  time_str: string;
   cur_500: number;
   cur_200: number;
   cur_100: number;
@@ -176,7 +178,10 @@ export let Value = ({
       <div>
         <button
           onClick={() => {
+            const timeFor = timeFormat("%I:%M %p");
+            const time_str = timeFor(new Date());
             const state = {
+              time_str,
               cur_500,
               cur_200,
               cur_100,

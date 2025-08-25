@@ -11,6 +11,7 @@ table {
   text-align: justify;
   padding: 1rem 0.6rem;
   margin: 1rem;
+  width: inherit;
 }
 
 th,
@@ -23,4 +24,9 @@ thead th {
 }
 tr:nth-of-type(odd) {
   background-color: #e8f7ff;
+}
+th svg {
+  width: 2rem;
+  height: 2rem;
+  /* padding: ; */
 }
